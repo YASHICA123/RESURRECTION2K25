@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;               /* #000000 Black */
+    --foreground: 0 0% 98%;              /* White text */
+
+    --card: 0 0% 7%;                     /* Near black */
+    --card-foreground: 0 0% 98%;         /* White */
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 40 66% 48%;               /* #d49902 Gold */
+    --primary-foreground: 0 0% 0%;       /* Black text on gold */
+
+    --secondary: 51 77% 65%;             /* #ebbe1c Yellow */
+    --secondary-foreground: 0 0% 0%;     /* Black text on yellow */
+
+    --accent: 357 66% 47%;               /* #bd2126 Red */
+    --accent-foreground: 0 0% 98%;       /* White on red */
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 80%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 40 66% 48%;                  /* Gold ring */
+    --card-muted: 48 10% 82%;            /* #D1D0CB Light gray */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 40 66% 48%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 51 77% 65%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 357 66% 47%;
+    --accent-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 80%;
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 40 66% 48%;
+    --card-muted: 48 10% 82%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Outfit", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  h1, h2, h3, h4 {
+    font-family: "Anton", "Outfit", system-ui, sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  ::selection { background: hsl(var(--accent) / 0.3); color: hsl(var(--foreground)); }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--accent))); border-radius: 9999px; }
+}
+
+@layer utilities {
+  .neon-text { text-shadow: 0 0 12px hsl(var(--primary) / 0.65), 0 0 24px hsl(var(--accent) / 0.6), 0 0 48px hsl(var(--primary) / 0.45); }
+  .neon-ring { box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2), 0 0 30px hsl(var(--primary) / 0.25), inset 0 0 30px hsl(var(--accent) / 0.15); }
+  .glass { background: linear-gradient(180deg, hsl(var(--card) / 0.5), hsl(var(--card) / 0.2)); backdrop-filter: blur(10px); border: 1px solid hsl(var(--border)); }
+  .gradient-neon { background-image: radial-gradient(1200px 600px at 10% 10%, hsl(var(--accent) / 0.25), transparent 50%), radial-gradient(1200px 600px at 90% 20%, hsl(var(--primary) / 0.25), transparent 50%), radial-gradient(1200px 600px at 50% 90%, hsl(var(--secondary) / 0.28), transparent 60%); }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .shimmer {
+    background-image: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.06), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+}
